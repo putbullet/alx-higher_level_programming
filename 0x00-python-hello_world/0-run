@@ -1,4 +1,2 @@
 #!/bin/bash
-
-# Run the Python script using the specified file
-python3 "$PYFILE"
+/bin/bash -c "python3 $PYFILE"
