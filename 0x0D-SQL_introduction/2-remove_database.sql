@@ -1,2 +1,4 @@
--- This is a query that deletes the database.
-DROP DATABASE IF EXISTS 'hbtn_0c_0';
+-- 2-remove_database.sql
+
+-- Drop the database if it exists
+DROP DATABASE IF EXISTS hbtn_0c_0;
