@@ -1,2 +1,5 @@
--- insert a new row to the table.
-INSERT INTO 'first_table' ('id', 'name') VALUES (89, "Best School");
+-- Displays the number of records with id = 89 in the table first_table in my MySQL server.
+SELECT COUNT(*)
+FROM `first_table`
+WHERE `id` = 89;
+
