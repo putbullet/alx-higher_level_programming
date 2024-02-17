@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Navigate to your git repository directory
+#cd /path/to/your/git/repository
+
+# Add all changes to the staging area
+git add .
+
+# Commit changes with a default commit message
+git commit -m "commit"
+
+# Push changes to the remote repository
+git push
+
