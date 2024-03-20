@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-"""2-rectangle, built for Holberton Python project 0x08 task 2.
+"""5-rectangle, built for Holberton Python project 0x08 task 5.
 """
 
 
 class Rectangle:
     """Takes in args for width and height of a rectangle, and contains methods
     for calculation of the area or perimeter.
+
+    __str__, __repr__, and __del__ fuctionality defined below.
 
     Args:
         width (int): horizontal dimension of rectangle, defaults to 0
@@ -104,3 +106,51 @@ class Rectangle:
             return 0
         else:
             return (self.__width * 2) + (self.__height * 2)
+
+    def _draw_rectangle(self):
+        """Formats a string of '#' and '\n' chars to print the rectangle
+        represented by the current instance.
+
+        Attributes:
+            __width (int): horizontal dimension of rectangle
+            __height (int): vertical dimension of rectangle
+            str (str): string to constructed for return
+
+        Returns:
+            str (str): string suitable for printing rectangle (final newline
+            omitted)
+
+        """
+        str = ""
+        for row in range(self.__height):
+            for col in range(self.__width):
+                str += '#'
+            if self.__width != 0 and row < (self.__height - 1):
+                str += '\n'
+        return str
+
+    def __str__(self):
+        """Allows direct printing of instances.
+
+        Returns:
+            The output of _draw_rectangle, which creates a string
+        representation of the rectangle suitable for printing.
+
+        """
+        return self._draw_rectangle()
+
+    def __repr__(self):
+        """Allows use of eval().
+
+        Returns:
+            A string of the code needed to create the instance.
+
+        """
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+
+    @staticmethod
+    def __del__():
+        """Prints message upon deletion of instance.
+
+        """
+        print('Bye rectangle...')
