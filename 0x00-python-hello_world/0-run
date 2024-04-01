@@ -1,3 +1,2 @@
 #!/bin/bash
-PYTHON_INTERPRETER="/usr/bin/python3"
-$PYTHON_INTERPRETER "$PYFILE"
+python3 $PYFILE
