@@ -1,17 +1,31 @@
 #!/usr/bin/python3
-"""Lists states"""
+"""List cities"""
 
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
+import MySQLdb
+from sys import argv
 
-Base = declarative_base()
+if __name__ == "__main__":
+    if len(argv) != 5:
+        print("Usage: {} <username> <password> <database> <state>".format(argv[0]))
+        exit(1)
 
+    mysql_username = argv[1]
+    mysql_password = argv[2]
+    database_name = argv[3]
+    state_name = argv[4]
 
-class City(Base):
-    """Class representing the states table"""
-    __tablename__ = 'cities'
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=mysql_username,
+        passwd=mysql_password,
+        db=database_name
+    )
 
-    id = Column(Integer, nullable=False, primary_key=True,
-                autoincrement=True, unique=True)
-    name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
+    cursor = db.cursor()
+
+    cursor.execute("SELECT cities.name FROM cities JOIN states ON cities.state_id = states.id WHERE states.name = %s        ORDER BY cities.id", (state_name,))
+
+    cities = cursor.fetchall()
+    cursor.close()
+    db.close()
