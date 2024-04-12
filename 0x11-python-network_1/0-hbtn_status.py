@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""Fetches https://intranet.hbtn.io/status."""
-from urlib.request import Request, urlopen
+"""Script that fetches https://alx-intranet.hbtn.io/status."""
+from urllib.request import Request, urlopen
 
 
 if __name__ == "__main__":
-    request = Request("https://intranet.hbtn.io/status")
-    with urlopen(request) as response:
+    req = Request("https://alx-intranet.hbtn.io/status")
+    with urlopen(req) as response:
         body = response.read()
         print("Body response:")
         print("\t- type: {}".format(type(body)))
