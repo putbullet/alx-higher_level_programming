@@ -12,13 +12,8 @@ import requests
 
 
 if __name__ == "__main__":
-
-    if len(argv) == 1:
-        letter = ""
-    else:
-        letter = argv[1]
-    letters = { 'q': letter }
-    req = requests.post('http://0.0.0.0:5000/search_user' , data=letters)
+    letter = "" if len(argv) == 1 else argv[1]
+    req = requests.post("http://0.0.0.0:5000/search_user", {"q": letter})
 
     try:
         response = req.json()
